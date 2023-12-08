@@ -10,13 +10,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.ui.theme.NewsAppTheme
 
 class MainActivity : ComponentActivity() {
+    private val newsList = mutableListOf<News>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-
-            }
-        }
+        setContentView(R.layout.activity_main)
+        initialRecView()
     }
+
+    private fun initialRecView() {
+        val recView = findViewById<RecyclerView>(R.id.recView)
+        val newsAdaptor = NewsAdaptor(newsList)
+        recView.adapter = newsAdaptor
+        recView.layoutManager = LinearLayoutManager(this)
+    }
+}
+
+
