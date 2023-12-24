@@ -11,7 +11,7 @@ data class News(
     val url: String,
     val urlToImage: Any,
 
-) {
+    ) {
 
 }
 //POJO

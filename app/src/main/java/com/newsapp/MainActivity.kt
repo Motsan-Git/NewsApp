@@ -2,6 +2,7 @@ package com.newsapp
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ProgressBar
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +12,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.newsapp.ui.theme.API
@@ -28,6 +31,8 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.activity_main)
         initialRecView()
         lifecycleScope.launch {
+            val progressBar=findViewById<ProgressBar>(R.id.progressBar)
+            progressBar.isVisible = true
             val response =
                 Retrofit.Builder().baseUrl("https://newsapi.org/v2/").addConverterFactory(
                     GsonConverterFactory.create()
@@ -36,8 +41,9 @@ class MainActivity : ComponentActivity() {
             if (response.isSuccessful && response.body() != null) {
                 newsList.addAll(response.body()!!.articles)
                 initialRecView()
-            }else
-                Log.e("chekResponse","noting")
+                progressBar.isVisible = false
+            } else
+                Log.e("chekResponse", "noting")
         }
     }
 
@@ -46,6 +52,9 @@ class MainActivity : ComponentActivity() {
         val newsAdaptor = NewsAdaptor(newsList, this)
         recView.adapter = newsAdaptor
         recView.layoutManager = LinearLayoutManager(this)
+        val dividerItemDecoration=
+            DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        recView.addItemDecoration(dividerItemDecoration)
     }
 }
 
