@@ -14,11 +14,11 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".WebpageActivity"
+            android:name=".Activity.WebpageActivity"
             android:exported="true"
             android:theme="@style/AppTheme"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.NewsApp">

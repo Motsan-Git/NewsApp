@@ -1,7 +1,6 @@
-package com.newsapp.ui.theme
+package com.newsapp.API
 
-import com.newsapp.ResponseModel
-import com.newsapp.Source
+import com.newsapp.model.ResponseModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

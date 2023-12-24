@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_dodgeInsetEdges="all"
-    tools:context=".WebpageActivity">
+    tools:context=".Activity.WebpageActivity">
 
     <WebView
         android:id="@+id/webView"

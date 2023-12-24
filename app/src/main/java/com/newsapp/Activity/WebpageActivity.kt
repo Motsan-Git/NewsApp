@@ -1,11 +1,9 @@
-package com.newsapp
+package com.newsapp.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
-import android.webkit.WebViewClient
-import android.widget.ProgressBar
-import androidx.core.view.isVisible
+import com.newsapp.R
 
 class WebpageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
