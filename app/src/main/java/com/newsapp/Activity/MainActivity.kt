@@ -1,9 +1,12 @@
 package com.newsapp.Activity
 
+import android.graphics.ColorFilter
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.ProgressBar
 import androidx.activity.ComponentActivity
+import androidx.compose.ui.graphics.Color
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -39,6 +42,8 @@ class MainActivity : ComponentActivity() {
                 Log.e("chekResponse", "noting")
         }
     }
+
+
 
     private fun initialRecView() {
         val recView = findViewById<RecyclerView>(R.id.recView)
