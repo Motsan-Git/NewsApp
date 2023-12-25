@@ -1,4 +1,4 @@
-package com.newsapp
+package com.newsapp.model
 
 data class News(
 

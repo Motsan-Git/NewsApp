@@ -1,4 +1,4 @@
-package com.newsapp
+package com.newsapp.adaptor
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-
+import com.newsapp.Activity.WebpageActivity
+import com.newsapp.model.News
+import com.newsapp.R
 class NewsAdaptor(var newsList: MutableList<News>, var context: Context) :
     RecyclerView.Adapter<NewsAdaptor.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -18,7 +20,7 @@ class NewsAdaptor(var newsList: MutableList<News>, var context: Context) :
         val description: TextView
         val dateAndWriter: TextView
         val image: ImageView
-
+        //    <style name="Theme.NewsApp" parent="android:Theme.Material.Light.NoActionBar" />
         init {
             view.apply {
                 titel = findViewById(R.id.titelTv)
@@ -26,11 +28,9 @@ class NewsAdaptor(var newsList: MutableList<News>, var context: Context) :
                 dateAndWriter = findViewById(R.id.datewriterTv)
                 image = findViewById(R.id.imageView)
                 titel.setOnClickListener {
-                    val intent=Intent(context,WebpageActivity::class.java)
-                    intent.putExtra("url",newsList[adapterPosition].url)
+                    val intent = Intent(context, WebpageActivity::class.java)
+                    intent.putExtra("url", newsList[adapterPosition].url)
                     context.startActivity(intent)
-
-
                 }
             }
         }
@@ -49,6 +49,7 @@ class NewsAdaptor(var newsList: MutableList<News>, var context: Context) :
             description.text = newsList[position].description
             dateAndWriter.text = newsList[position].publishedAt + " " + newsList[position].author
             Glide.with(context).load(newsList[position].urlToImage).into(image)
+
         }
     }
 
@@ -58,3 +59,7 @@ class NewsAdaptor(var newsList: MutableList<News>, var context: Context) :
 
 
 }
+
+
+
+

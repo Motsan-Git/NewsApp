@@ -1,28 +1,24 @@
-package com.newsapp
+package com.newsapp.Activity
 
+import android.graphics.ColorFilter
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.ProgressBar
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.newsapp.ui.theme.API
-import com.newsapp.ui.theme.NewsAppTheme
+import com.newsapp.model.News
+import com.newsapp.adaptor.NewsAdaptor
+import com.newsapp.R
+import com.newsapp.API.API
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class MainActivity : ComponentActivity() {
     private val newsList = mutableListOf<News>()
@@ -46,6 +42,8 @@ class MainActivity : ComponentActivity() {
                 Log.e("chekResponse", "noting")
         }
     }
+
+
 
     private fun initialRecView() {
         val recView = findViewById<RecyclerView>(R.id.recView)
